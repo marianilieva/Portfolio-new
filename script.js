@@ -1,31 +1,31 @@
-$(function()    {
-    $('.menu').on('click', function()   {
-        if ($('.menu-tags').css('display') == 'none')   {
-            $('.menu-tags').css('display', 'block');
-        }
-        else    {
-            $('.menu-tags').hide();
+$(function () {
+    $(".menu").on("click", function () {
+        if ($(".menu-tags").css("display") == "none") {
+            $(".menu-tags").css("display", "block");
+        } else {
+            $(".menu-tags").hide();
         }
     });
 
-    $('.ask').on('click', function(event) {
+    $(".ask").on("click", function (event) {
         event.preventDefault();
         $.ajax({
-            URL: 'quotes.json?time="+newDate().getTime',
-            type: 'get',
-            contentType: 'application/json',
+            url: 'quotes.json?time="+newDate().getTime"',
+            type: "get",
+            contentType: "application/json",
+            dataType: "json",
             cache: false,
-            headers:    {
+            headers: {
                 "Cache-control": "no-cache, no-store, must-revalidate",
-                "Pragma": "no-cache",
-                "Expires": 0
+                Pragma: "no-cache",
+                Expires: "0",
             },
-            success: function(response) {
+            success: function (response) {
                 console.log(response);
             },
-            error: function(error)   {
-                console.log('error');
-            }
+            error: function (error) {
+                console.log("error", error);
+            },
         });
     });
 });
