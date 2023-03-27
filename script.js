@@ -10,8 +10,8 @@ $(function()    {
 
     $('.ask').on('click', function(event) {
         event.preventDefault();
-        $.ajax({
-            URL: 'quotes.json?time="+newDate().getTime',
+        /*$.ajax({
+            URL: '/quotes.json?time="+newDate().getTime',
             type: 'get',
             contentType: 'application/json',
             cache: false,
@@ -24,8 +24,14 @@ $(function()    {
                 console.log(response);
             },
             error: function(error)   {
-                console.log('error');
+                console.log(error);
             }
-        });
+        });*/
+
+        fetch('/quotes.json')
+        .then(res => res.json())
+        .then(res => { 
+            console.log(res);
+        })
     });
 });
